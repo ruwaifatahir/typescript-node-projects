@@ -14,7 +14,7 @@ import { question } from "readline-sync";
 const MAX_NUMBER: number = 5;
 
 //Change this number to increase or decrease the target e.g if number is set to 5 then whoever reaches 5 points first wins.
-const TARGET: number = 2;
+const TARGET: number = 10;
 
 //Main
 async function main(): Promise<void> {
@@ -28,10 +28,10 @@ async function main(): Promise<void> {
     computerGuess = getRandomInt(MAX_NUMBER);
     if (playerGuess === computerGuess) {
       playerScore++;
-      logScore(playerScore, computerScore);
+      logScore(computerGuess, playerScore, computerScore);
     } else {
       computerScore++;
-      logScore(playerScore, computerScore);
+      logScore(computerGuess, playerScore, computerScore);
     }
   }
 
@@ -51,7 +51,8 @@ function getRandomInt(max: number): number {
   return Math.floor(Math.random() * max);
 }
 
-function logScore(pPoints: number, cPoints: number): void {
+function logScore(cGuess: number, pPoints: number, cPoints: number): void {
+  console.log("Computer Guess: ", cGuess, "\n");
   console.log("Player Score: ", pPoints, "\n");
   console.log("Computer Score: ", cPoints, "\n");
 }

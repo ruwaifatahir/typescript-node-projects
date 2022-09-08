@@ -49,7 +49,7 @@ var readline_sync_1 = require("readline-sync");
 //Change this number to increase or decrease the max number e.g if number is set to 5 then computer will pick a number between 0 to 5.
 var MAX_NUMBER = 5;
 //Change this number to increase or decrease the target e.g if number is set to 5 then whoever reaches 5 points first wins.
-var TARGET = 2;
+var TARGET = 10;
 //Main
 function main() {
     return __awaiter(this, void 0, void 0, function () {
@@ -62,11 +62,11 @@ function main() {
                 computerGuess = getRandomInt(MAX_NUMBER);
                 if (playerGuess === computerGuess) {
                     playerScore++;
-                    logScore(playerScore, computerScore);
+                    logScore(computerGuess, playerScore, computerScore);
                 }
                 else {
                     computerScore++;
-                    logScore(playerScore, computerScore);
+                    logScore(computerGuess, playerScore, computerScore);
                 }
             }
             if (playerScore > computerScore) {
@@ -86,7 +86,8 @@ main()["catch"](function (error) {
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
-function logScore(pPoints, cPoints) {
+function logScore(cGuess, pPoints, cPoints) {
+    console.log("Computer Guess: ", cGuess, "\n");
     console.log("Player Score: ", pPoints, "\n");
     console.log("Computer Score: ", cPoints, "\n");
 }
